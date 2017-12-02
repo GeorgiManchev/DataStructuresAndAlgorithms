@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace DataStructuresAndAlgorithms
+namespace DataStructuresAndAlgorithms.Search
 {
     public static class Search
     {
@@ -32,7 +32,7 @@ namespace DataStructuresAndAlgorithms
             return -1;
         }
 
-        public static int BinaryRecursive<T>(IList<T> group, int key, int min, int max) where T : IComparable<T>
+        public static int BinaryRecursive<T>(this IList<T> group, T key, int min, int max) where T : IComparable<T>
         {
             //no matching element found
             if (min > max)
@@ -56,7 +56,7 @@ namespace DataStructuresAndAlgorithms
                     break;
             }
 
-            return BinaryRecursive(group, key, min, max);
+            return group.BinaryRecursive(key, min, max);
         }
     }
 }
